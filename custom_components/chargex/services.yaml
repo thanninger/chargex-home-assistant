@@ -1,0 +1,13 @@
+prefix_entity_ids:
+  name: Entity-IDs mit ChargeX-Präfix versehen
+  description: >-
+    Vorschau oder Umbenennung vorhandener ChargeX-Entity-IDs. Fügt chargex_
+    hinter sensor. bzw. binary_sensor. ein. Führt keine Modbus-Abfragen aus.
+    Referenzen in YAML, Templates und Dashboards anschließend prüfen.
+  fields:
+    apply:
+      name: Umbenennung anwenden
+      description: Ohne Aktivierung wird nur eine Vorschau zurückgegeben.
+      default: false
+      selector:
+        boolean:

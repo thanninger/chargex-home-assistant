@@ -1,0 +1,17 @@
+{
+  "domain": "chargex",
+  "name": "ChargeX Aqueduct (lesend)",
+  "version": "0.1.2",
+  "config_flow": true,
+  "dependencies": [
+    "modbus"
+  ],
+  "codeowners": [
+    "@thanninger"
+  ],
+  "iot_class": "local_polling",
+  "integration_type": "hub",
+  "documentation": "https://github.com/thanninger/chargex-home-assistant",
+  "requirements": [],
+  "issue_tracker": "https://github.com/thanninger/chargex-home-assistant/issues"
+}

@@ -1,0 +1,83 @@
+{
+  "title": "ChargeX Aqueduct (lesend)",
+  "config": {
+    "step": {
+      "user": {
+        "title": "ChargeX-Ladesystem hinzufügen",
+        "description": "Nur lesend. Die Ladepunkte werden aus der gemeldeten Modulanzahl angelegt. Modulindex 0 ist das Startmodul.",
+        "data": {
+          "name": "Name des Ladesystems",
+          "host": "IP-Adresse / Hostname",
+          "port": "TCP-Port",
+          "unit_id": "Modbus Unit-ID",
+          "scan_interval": "Abfrageintervall (Sekunden)",
+          "point_names": "Ladepunktnamen in Modulreihenfolge, durch Komma getrennt"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen. IP, Port, Unit-ID und Netzwerk prüfen.",
+      "invalid_device": "Keine gültige ChargeX-Geräteidentifikation empfangen.",
+      "invalid_response": "Ungültige Registerantwort oder Modulanzahl.",
+      "invalid_input": "Name und Host dürfen nicht leer sein.",
+      "wrong_point_names": "Bitte genau einen Namen je gemeldetem Ladepunkt angeben, durch Komma getrennt, oder das Feld leer lassen.",
+      "unknown": "Unerwarteter Fehler. Siehe Home-Assistant-Protokoll."
+    },
+    "abort": {
+      "already_configured": "Dieses Ladesystem ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ChargeX-Abfrage einstellen",
+        "description": "Systemfehlerregister zunächst deaktiviert lassen: Die Herstellerdokumentation widerspricht sich bei Adresse und Bitbelegung. Änderungen laden die Integration neu. Gerätenamen können in HA angepasst werden.",
+        "data": {
+          "scan_interval": "Abfrageintervall (Sekunden)",
+          "point_names": "Ladepunktnamen in Modulreihenfolge, durch Komma getrennt",
+          "stale_seconds": "Maximales Alter der Zählermessung (Sekunden)",
+          "system_error_address": "Systemfehlerregister: 0 = deaktiviert, 62 / 63 = Diagnose"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen. IP, Port, Unit-ID und Netzwerk prüfen.",
+      "invalid_device": "Keine gültige ChargeX-Geräteidentifikation empfangen.",
+      "invalid_response": "Ungültige Registerantwort oder Modulanzahl.",
+      "invalid_input": "Name und Host dürfen nicht leer sein.",
+      "wrong_point_names": "Bitte genau einen Namen je gemeldetem Ladepunkt angeben, durch Komma getrennt, oder das Feld leer lassen.",
+      "unknown": "Unerwarteter Fehler. Siehe Home-Assistant-Protokoll."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "phase_mode": {
+        "name": "Phasenmodus",
+        "state": {
+          "single_phase": "Einphasig",
+          "three_phase": "Dreiphasig"
+        }
+      },
+      "charging_mode": {
+        "name": "Charging Mode",
+        "state": {
+          "full_control": "Full control",
+          "minimum_charge": "Minimum charge",
+          "no_reduction": "No reduction"
+        }
+      }
+    }
+  },
+  "services": {
+    "prefix_entity_ids": {
+      "name": "Entity-IDs mit ChargeX-Präfix versehen",
+      "description": "Vorschau oder Umbenennung vorhandener ChargeX-Entity-IDs. Führt keine Modbus-Anfragen aus. Referenzen in YAML, Templates und Dashboards anschließend prüfen.",
+      "fields": {
+        "apply": {
+          "name": "Umbenennung anwenden",
+          "description": "Ohne Aktivierung wird nur eine Vorschau zurückgegeben."
+        }
+      }
+    }
+  }
+}
